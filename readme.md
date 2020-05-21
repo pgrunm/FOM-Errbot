@@ -17,3 +17,8 @@ pip3 installl errbot
 
 - Install the require Python package with `pip install python-telegram-bot`.
 - Follow the tutorial as described [here](https://errbot.readthedocs.io/en/latest/user_guide/configuration/telegram.html)
+
+## Interesting plugins
+
+- [ChatOps Plugin](https://github.com/andrewthetechie/errbot-chatopsanything)
+- [Gitbot](https://github.com/errbotio/err-gitbot)
