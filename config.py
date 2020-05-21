@@ -1,6 +1,6 @@
 import logging
 
-BACKEND = 'Text'
+BACKEND = 'Telegram'
 
 BOT_DATA_DIR = r'./data'
 BOT_EXTRA_PLUGIN_DIR = r'./plugins'
@@ -14,3 +14,7 @@ BOT_ADMINS = (123456789, )
 BOT_IDENTITY = {
     'token': '103419016:AAbcd1234...',
 }
+
+# Telegram specific settings as mentioned in the docs
+BOT_PREFIX = '/'
+CHATROOM_PRESENCE = ()
