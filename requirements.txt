@@ -28,3 +28,4 @@ waitress==1.4.3
 WebOb==1.8.6
 WebTest==2.0.35
 Werkzeug==1.0.1
+gitpython
