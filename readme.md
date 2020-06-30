@@ -24,3 +24,7 @@ pip3 installl errbot
 - [Jenkins Plugin](https://github.com/ESSS/err-jenkins)
 - [ChatOps Plugin](https://github.com/andrewthetechie/errbot-chatopsanything)
 - [Prometheus Alertmanager](https://github.com/Voronenko/errbot-prometheus-alertmanager) (see [here](https://prometheus.io/docs/alerting/alertmanager/) for information on the Prometheus Alertmanager)
+
+## Plugin Development
+
+- [General overview](https://errbot.readthedocs.io/en/latest/user_guide/plugin_development/index.html)
