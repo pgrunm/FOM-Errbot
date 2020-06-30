@@ -1,4 +1,5 @@
-from errbot import BotPlugin, botcmd, arg_botcmd, webhook
+from errbot import BotPlugin, botcmd, arg_botcmd, webhook, logging
+import sqlite3
 
 
 class Postmortem(BotPlugin):
@@ -13,6 +14,36 @@ class Postmortem(BotPlugin):
         You should delete it if you're not using it to override any default behaviour
         """
         super(Postmortem, self).activate()
+
+        # Create the postmortem database
+        # Create a database connection and a cursor for executing commands.
+        conn = sqlite3.connect('postmortem.db')
+        c = conn.cursor()
+
+        try:
+            # Create database with tables
+            c.executescript('''
+            CREATE TABLE "Sources" (
+            "source_id"	INTEGER,
+            "url"	TEXT, 
+            "last_access_timestamp"	TEXT, 
+            "http_status_code"	INTEGER, 
+            PRIMARY KEY("source_id"));
+            
+            CREATE TABLE "Postmortems" (
+            "content"	TEXT,
+            "fk_source_id"	INTEGER,
+            "postmortem_id" INTEGER,
+            FOREIGN KEY("fk_source_id") REFERENCES "Sources"("source_id"),
+            PRIMARY KEY("postmortem_id"));
+            ''')
+
+            # close the database connection
+            conn.commit()
+
+        except sqlite3.OperationalError as oe:
+            self.log.error(f'Error occured while creating database: {oe}')
+        conn.close()
 
     def deactivate(self):
         """
@@ -40,6 +71,7 @@ class Postmortem(BotPlugin):
 
         You should delete it if you're not using it to override any default behaviour
         """
+
         super(Postmortem, self).check_configuration(configuration)
 
     def callback_connect(self):
@@ -79,3 +111,5 @@ class Postmortem(BotPlugin):
             return f'Hello {args.name}.'
         else:
             return f'Hello {args.name}, I hear your favorite number is {args.favorite_number}.'
+
+    # Own functions
