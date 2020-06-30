@@ -30,7 +30,7 @@ class Postmortem(BotPlugin):
         """
         return {'EXAMPLE_KEY_1': "Example value",
                 'EXAMPLE_KEY_2': ["Example", "Value"]
-               }
+                }
 
     def check_configuration(self, configuration):
         """
@@ -65,18 +65,6 @@ class Postmortem(BotPlugin):
         You should delete it if you're not using it to override any default behaviour
         """
         pass
-
-    @webhook
-    def example_webhook(self, incoming_request):
-        """A webhook which simply returns 'Example'"""
-        return "Example"
-
-    # Passing split_args_with=None will cause arguments to be split on any kind
-    # of whitespace, just like Python's split() does
-    @botcmd(split_args_with=None)
-    def example(self, message, args):
-        """A command which simply returns 'Example'"""
-        return "Example"
 
     @arg_botcmd('name', type=str)
     @arg_botcmd('--favorite-number', type=int, unpack_args=False)
